@@ -13,15 +13,15 @@ namespace BisectionApp.ViewModels
         private double _leftBound;
         private double _rightBound;
         private double _accuracy = 0.0001;
-        private CalculationResult? _lastResult;  // ✅ Добавь ? (nullable)
-        private ObservableCollection<CalculationResult> _history;  // ✅ Инициализируй сразу
+        private CalculationResult? _lastResult;  
+        private ObservableCollection<CalculationResult> _history; 
         private string _statusMessage;
 
         public MainViewModel()
         {
-            _history = new ObservableCollection<CalculationResult>();  // ✅ Инициализация
-            _statusMessage = string.Empty;  // ✅ Инициализация
-            _lastResult = null;  // ✅ Явно указываем null
+            _history = new ObservableCollection<CalculationResult>();  
+            _statusMessage = string.Empty;  
+            _lastResult = null;  
 
             History = _history;
             CalculateCommand = new RelayCommand(CalculateRoot, CanCalculate);
@@ -31,7 +31,7 @@ namespace BisectionApp.ViewModels
             CheckDatabaseConnection();
         }
 
-        // ==================== СВОЙСТВА ====================
+        
 
         public double LeftBound
         {
@@ -51,7 +51,7 @@ namespace BisectionApp.ViewModels
             set { _accuracy = value; OnPropertyChanged(); }
         }
 
-        public CalculationResult? LastResult  // ✅ Добавь ?
+        public CalculationResult? LastResult  
         {
             get => _lastResult;
             set { _lastResult = value; OnPropertyChanged(); }
@@ -69,13 +69,13 @@ namespace BisectionApp.ViewModels
             set { _statusMessage = value; OnPropertyChanged(); }
         }
 
-        // ==================== КОМАНДЫ ====================
+        
 
         public RelayCommand CalculateCommand { get; }
         public RelayCommand LoadHistoryCommand { get; }
         public RelayCommand ClearHistoryCommand { get; }
 
-        // ==================== ПРОВЕРКА ПОДКЛЮЧЕНИЯ ====================
+        
 
         private void CheckDatabaseConnection()
         {
@@ -90,7 +90,7 @@ namespace BisectionApp.ViewModels
             }
         }
 
-        // ==================== МЕТОД ПОЛОВИННОГО ДЕЛЕНИЯ ====================
+        
 
         private void CalculateRoot(object parameter)
         {
@@ -158,7 +158,7 @@ namespace BisectionApp.ViewModels
             return Math.Pow(x, 3) - x - 2;
         }
 
-        // ==================== ЗАГРУЗКА ИСТОРИИ ====================
+        
 
         private void LoadHistory(object parameter)
         {
@@ -179,7 +179,7 @@ namespace BisectionApp.ViewModels
             }
         }
 
-        // ==================== ОЧИСТКА ИСТОРИИ ====================
+        
 
         private void ClearHistory(object parameter)
         {
@@ -203,7 +203,7 @@ namespace BisectionApp.ViewModels
             }
         }
 
-        // ==================== INotifyPropertyChanged ====================
+        
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string name = null)
