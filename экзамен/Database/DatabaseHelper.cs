@@ -5,19 +5,14 @@ using System.Collections.Generic;
 
 namespace BisectionApp.Database
 {
-    /// <summary>
-    /// Класс для работы с базой данных PostgreSQL через Npgsql
-    /// </summary>
+   
     public static class DatabaseHelper
     {
-        // Строка подключения к PostgreSQL
-        // ЗАМЕНИТЕ Password на свой пароль!
+      
         private static readonly string ConnectionString =
             "Host=localhost;Port=5432;Database=bisection_db;Username=postgres;Password=password";
 
-        /// <summary>
-        /// Создание таблицы, если она не существует
-        /// </summary>
+
         public static void CreateTable()
         {
             using (var connection = new NpgsqlConnection(ConnectionString))
@@ -43,9 +38,7 @@ namespace BisectionApp.Database
             }
         }
 
-        /// <summary>
-        /// Проверка подключения к базе данных
-        /// </summary>
+      
         public static bool CheckConnection()
         {
             try
@@ -62,9 +55,7 @@ namespace BisectionApp.Database
             }
         }
 
-        /// <summary>
-        /// Сохранение результата вычисления в базу данных
-        /// </summary>
+ 
         public static void SaveResult(CalculationResult result)
         {
             using (var connection = new NpgsqlConnection(ConnectionString))
